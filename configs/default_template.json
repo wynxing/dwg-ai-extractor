@@ -1,0 +1,63 @@
+{
+  "template_id": "default_bom_v1",
+  "name": "默认物料明细模板",
+  "output_sheet_name": "物料明细表",
+  "fields": [
+    {
+      "key": "sequence",
+      "label": "序号",
+      "description": "输出行序号。由程序生成，模型可以留空。",
+      "required": true,
+      "example": "1",
+      "postprocess": "sequence"
+    },
+    {
+      "key": "item_code",
+      "label": "物料编码",
+      "description": "物料编码或图纸编号，例如 M930102593。优先从文件名、标题栏、图纸编号中识别。",
+      "required": true,
+      "example": "M930102593",
+      "postprocess": "strip"
+    },
+    {
+      "key": "item_name",
+      "label": "物料名称",
+      "description": "零件名称或物料名称，例如 指示镜片、手柄上壳。",
+      "required": true,
+      "example": "指示镜片",
+      "postprocess": "strip"
+    },
+    {
+      "key": "image",
+      "label": "图片",
+      "description": "首版固定为空字符串，不生成图片。",
+      "required": false,
+      "example": "",
+      "postprocess": "force_empty"
+    },
+    {
+      "key": "material",
+      "label": "材料",
+      "description": "材料信息。需要从技术要求中拆分，颜色应放入颜色字段，不要混入颜色描述。",
+      "required": false,
+      "example": "PC，透光均匀，阻燃等级V-2",
+      "postprocess": "strip"
+    },
+    {
+      "key": "color",
+      "label": "颜色",
+      "description": "颜色或色板信息，例如 深空灰（参考样品）、素材黑色、乳白色（参考样板）。",
+      "required": false,
+      "example": "乳白色（参考样板）",
+      "postprocess": "strip"
+    },
+    {
+      "key": "surface_treatment",
+      "label": "表面处理",
+      "description": "表面处理工艺。若标题栏写见技术要求或详见技术要求，需要根据技术要求正文总结喷油、NCVM、抛光等工艺，并包含厚度、绝缘、耐压等关键描述。",
+      "required": false,
+      "example": "局部抛光",
+      "postprocess": "strip"
+    }
+  ]
+}

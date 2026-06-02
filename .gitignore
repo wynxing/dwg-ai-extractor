@@ -1,0 +1,40 @@
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Packaging and build outputs
+*.egg-info/
+build/
+dist/
+wheelhouse/
+
+# Local application and environment config
+.env
+.env.*
+!.env.example
+config.json
+model_config.json
+local_config.json
+
+# CAD source files and generated reports
+*.dwg
+*.dxf
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+
+# Editor and OS files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
