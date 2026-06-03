@@ -1,3 +1,5 @@
+> **English** | [中文](README.md)
+
 # DWG AI 字段抽取系统
 
 DWG AI 字段抽取系统是一个 Windows 桌面和命令行工具，用于从 DWG/DXF 图纸中读取 CAD 原生文字、块属性和标题栏信息，再通过 OpenAI-compatible Chat Completions 接口按字段模板抽取结构化结果，并导出 Excel。
