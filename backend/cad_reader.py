@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import platform
 import shutil
 import subprocess
 import tempfile
@@ -7,6 +8,8 @@ from pathlib import Path
 from typing import Any
 
 import ezdxf
+
+_CONVERTER_EXE = "ODAFileConverter.exe" if platform.system() == "Windows" else "ODAFileConverter"
 
 from .models import ConverterConfig, DrawingContext, TextRecord
 
@@ -48,7 +51,7 @@ def read_drawing_context(path: Path, converter: ConverterConfig) -> DrawingConte
 def convert_dwg_to_dxf(dwg_path: Path, config: ConverterConfig) -> Path:
     executable = resolve_converter_executable(config.executable_path)
     if executable is None:
-        raise ConversionError("未配置可用的 ODAFileConverter.exe，无法处理 DWG 文件")
+        raise ConversionError(f"未配置可用的 {_CONVERTER_EXE}，无法处理 DWG 文件")
 
     with tempfile.TemporaryDirectory(prefix="dwg_ai_extract_") as temp_dir:
         temp_root = Path(temp_dir)
@@ -90,7 +93,7 @@ def resolve_converter_executable(path_value: str) -> Path | None:
     if path.is_file():
         return path
     if path.is_dir():
-        candidate = path / "ODAFileConverter.exe"
+        candidate = path / _CONVERTER_EXE
         if candidate.is_file():
             return candidate
     return None

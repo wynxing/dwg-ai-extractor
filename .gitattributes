@@ -5,6 +5,8 @@
 *.toml text working-tree-encoding=UTF-8
 *.json text working-tree-encoding=UTF-8
 *.txt text working-tree-encoding=UTF-8
+*.sh text eol=lf
+*.ps1 text eol=crlf
 
 *.dwg binary
 *.dxf binary

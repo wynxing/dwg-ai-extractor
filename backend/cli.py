@@ -15,7 +15,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output", "-o", required=True, help="输出 Excel 路径")
     parser.add_argument("--template", "-t", default="", help="字段模板 JSON 路径，留空使用默认模板")
     parser.add_argument("--llm-config", required=True, help="模型配置 JSON 路径")
-    parser.add_argument("--converter", "-c", default="", help="ODAFileConverter.exe 路径，仅 DWG 需要")
+    parser.add_argument("--converter", "-c", default="", help="ODAFileConverter 可执行文件路径，仅 DWG 需要")
     parser.add_argument("--recursive", action=argparse.BooleanOptionalAction, default=True, help="是否递归扫描目录")
     return parser
 

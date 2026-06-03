@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import platform
 from pathlib import Path
 from typing import Any
 
@@ -12,9 +13,17 @@ APP_DIR_NAME = "DWGAIExtractor"
 
 
 def default_config_path() -> Path:
-    base = os.environ.get("APPDATA")
-    if base:
-        return Path(base) / APP_DIR_NAME / "config.json"
+    system = platform.system()
+    if system == "Windows":
+        base = os.environ.get("APPDATA")
+        if base:
+            return Path(base) / APP_DIR_NAME / "config.json"
+    elif system == "Darwin":
+        return Path.home() / "Library" / "Application Support" / APP_DIR_NAME / "config.json"
+    else:
+        xdg = os.environ.get("XDG_CONFIG_HOME")
+        base = Path(xdg) if xdg else Path.home() / ".config"
+        return base / APP_DIR_NAME / "config.json"
     return Path.home() / f".{APP_DIR_NAME}" / "config.json"
 
 

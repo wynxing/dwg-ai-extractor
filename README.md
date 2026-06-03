@@ -15,6 +15,22 @@ DWG AI 字段抽取系统是一个 Windows 桌面和命令行工具，用于从 
 
 ## 快速开始
 
+### 一键启动（推荐）
+
+首次运行会自动创建虚拟环境、安装依赖并启动桌面界面。
+
+```powershell
+# Windows (PowerShell)
+.\start.ps1
+```
+
+```bash
+# macOS / Linux
+chmod +x start.sh && ./start.sh
+```
+
+### 手动初始化
+
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -24,7 +40,11 @@ python -m pip install -e ".[dev]"
 设置模型密钥环境变量。界面和配置里只填写环境变量名，不要填写 API Key 明文。
 
 ```powershell
+# Windows
 [Environment]::SetEnvironmentVariable("OPENAI_API_KEY", "你的APIKey", "User")
+
+# macOS / Linux（写入 shell 配置文件持久化）
+export OPENAI_API_KEY="你的APIKey"
 ```
 
 启动桌面界面：

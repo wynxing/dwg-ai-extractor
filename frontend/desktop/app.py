@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import platform
 from pathlib import Path
 from threading import Event
 
@@ -158,7 +159,8 @@ class MainWindow(QMainWindow):
             self.output_edit.setText(file_name if file_name.lower().endswith(".xlsx") else f"{file_name}.xlsx")
 
     def choose_converter(self) -> None:
-        file_name, _ = QFileDialog.getOpenFileName(self, "选择 ODAFileConverter.exe", "", "Executable (*.exe)")
+        exe_filter = "Executable (*.exe)" if platform.system() == "Windows" else "Executable (*)"
+        file_name, _ = QFileDialog.getOpenFileName(self, "选择 ODAFileConverter", "", exe_filter)
         if file_name:
             self.converter_edit.setText(file_name)
 
