@@ -1,4 +1,4 @@
-> **English** | [中文](README.md)
+> [English](README_EN.md) | **中文**
 
 # DWG AI 字段抽取系统
 
